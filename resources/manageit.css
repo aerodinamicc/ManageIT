@@ -15,7 +15,7 @@ header{
 }
 #logo{
     height: 70px;
-    width: 70px;
+    width: 90px;
 }
 #login{
     grid-column: 3 / 4;

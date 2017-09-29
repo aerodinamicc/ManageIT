@@ -1,0 +1,4 @@
+const createDatabase = () => ({
+    employees: [],
+    tasks: []
+})
