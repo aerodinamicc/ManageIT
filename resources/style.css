@@ -36,4 +36,12 @@ main{
 #log{
     grid-column: 2 / 6;
     grid-row: 5/7;
+    overflow-y: scroll;
+    height: 250px;
+}
+#createEmployeeForm{
+    display: none;
+}
+#createTaskForm{
+    display: none;
 }

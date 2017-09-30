@@ -3,28 +3,28 @@ const modelFactoryFunc = function () {
         `Employee =========<br />
         Name: ${this.name}. Manager: ${this.canManage}<br />
         Qualification: ${this.qualificationLevel}. Available: ${this.available}<br />
-        Assigned Tasks:<br />
-        ${this.assignedTasks.forEach(t => t.taskName + '<br />')}`
+        Assigned Tasks:<br />        
+        ${this.assignedTasks ? this.assignedTasks.forEach(t => t.taskName + '<br />') : 'No tasks are assigned'}`
     )
 
-    const createEmployee = (name, password, canManage, qualificationLevel, available, assignedTasks) => ({
+    const createEmployee = (name, password, qualificationLevel, canManage, available, assignedTasks) => ({
         get name() {
             return name
         },
         get password() {
             return password
         },
-        get canManage() {
-            return canManage
-        },
         get qualificationLevel() {
             return qualificationLevel
         },
+        get canManage() {
+            return canManage ? true : false
+        },
         get available() {
-            return available
+            return available ? true : false
         },
         get assignedTasks() {
-            return assignedTasks
+            return assignedTasks || []
         },
         toString: employeeToString
     })
@@ -36,7 +36,7 @@ const modelFactoryFunc = function () {
         Status: ${this.taskStatus}. Dead line: ${this.deadLine}<br />
         Comment: ${this.taskComment}<br />
         Assigned to:<br />
-        ${this.assignedEmployees.forEach(e => e.toString() + '<br />')}`
+        ${this.assignedEmployees ? this.assignedEmployees.forEach(e => e.toString() + '<br />') : 'No employees are assigned'}`
     )
 
     const createTask = (taskName, taskPriority, taskDifficulty, taskStatus, deadLine, taskComment, assignedEmployees) => ({
@@ -59,7 +59,7 @@ const modelFactoryFunc = function () {
             return taskComment
         },
         get assignedEmployees() {
-            return assignedEmployees
+            return assignedEmployees || []
         },
         toString: taskToString
     })
