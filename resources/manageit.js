@@ -45,7 +45,6 @@ $(function () {
         }
         
         //$(".draggable")[0].reset()
-
         $(`#${formID}`)[0].reset()
 
         return false // avoid to execute the actual submit of the form and page refresh
