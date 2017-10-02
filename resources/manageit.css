@@ -29,6 +29,18 @@ main{
     grid-column: 1;
     grid-row: 2 / 7;
 }
+.task p{
+    width: 150px;
+    height: 40px;
+    border: 2px solid gray;
+    background: yellow;
+}
+.employee p{
+    width: 150px;
+    height: 40px;
+    border: 2px solid gray;
+    background: #2CA3AC;
+}
 #employees{
     grid-column: 6;
     grid-row: 2 / 7;

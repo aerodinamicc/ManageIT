@@ -11,10 +11,45 @@
             <div id="login">Login</div>
         </header>
         <main>Callendar</main>
-        <section id="tasks">Tasks</section>
-        <section id="employees">Employees</section>
+        <section id="tasks">Tasks
+			<button id="button">Create new task</button>
+            <div class="task"><p>Task</p></div>
+            <div class="task"><p>Task</p></div>
+		</section>
+        <section id="employees">Employees
+            <div class="employee"><p>Vankata</p></div>
+            <div class="employee"><p>Pesho</p></div>
+        </section>
+            
         <section id="log">Log</section>
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="resources/dragAndDrop.js"></script>
+        <script>
+            //still not sure why the dragAndDrop.js does not function properly
+        $( function() {
+        //   let gallery = $( "#task" );
+            $( ".task" ).draggable({ revert: "invalid",
+                helper: "clone"});
+        
+            $( ".employee" ).droppable({
+            drop: function( event) {
+                $( this )
+                .find( "p" )
+                    .html( "Dropped!" );
+            //drop: function(event, ui) {
+            //    $.ui.ddmanager.current.cancelHelperRemoval = true;
+            }
+            });
+            
+            $( "#button" ).click(function() {
+                $("#tasks").append('<div class="task"><p>Task</p></div>');
+                $('.task').draggable({revert:"invalid"});
+                //once a new element is added to the DOM - dragable needs to be
+                //called again to select all appearences
+        });
+        });</script>
         
     </body>
 </html>
