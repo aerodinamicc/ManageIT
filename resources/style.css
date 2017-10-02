@@ -29,7 +29,7 @@ main{
     grid-column: 1;
     grid-row: 2 / 7;
 }
-.taskClass, .employeeClass{
+.draggable, .droppable{
     height: 15px;
 }
 #employees{

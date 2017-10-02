@@ -1,0 +1,87 @@
+diff --git a/index.html b/index.html
+index 8c2aa1a..42f8bed 100644
+--- a/index.html
++++ b/index.html
+@@ -1,7 +1,7 @@
+ <html>
+     <head>
+         <title>ManageIT</title>
+-        <link rel="stylesheet" href="resources/manageit.css">
++        <link rel="stylesheet" href="resources/style.css">
+         <link rel="shortcut icon" href="resources/images/favicon.ico" type="image/x-icon">
+         <link rel="icon" href="resources/images/favicon.ico" type="image/x-icon">
+     </head>
+@@ -10,11 +10,67 @@
+             <img id="logo" src="resources/images/logo.png" alt="Logo">
+             <div id="login">Login</div>
+         </header>
+-        <main>Callendar</main>
+-        <section id="tasks">Tasks</section>
+-        <section id="employees">Employees</section>
+-        <section id="log">Log</section>
++        <main>Calendar</main>
++        <section id="tasks">Tasks<br />
++            <button id="createTask">Create Task</button>
++            <form id="createTaskForm">
++                Name:
++                <input type="text" name="taskName" maxlength="15" size="15" required><br />
++                Priority:
++                <select type="list" name="taskPriority">
++                    <option value="high">High</option>
++                    <option value="normal">Normal</option>
++                    <option value="low">Low</option>
++                </select><br />
++                Difficulty:
++                <select type="list" name="taskDifficulty">
++                    <option value="high">High</option>
++                    <option value="normal">Normal</option>
++                    <option value="low">Low</option>
++                </select><br />
++                Status:
++                <select type="list" name="taskStatus">
++                    <option value="ongoing">Ongoing</option>
++                    <option value="unassigned">Unassigned</option>
++                    <option value="reassigned">Reassigned</option>
++                </select><br />
++                Deadline:
++                <input type="date" name="deadline" required><br />
++                Comment:
++                <textarea name="taskComment" cols="20" rows="3"></textarea><br />
++                <input type="submit" value="Create">
++                <input type="reset">
++            </form>
++        </section>
++        <section id="employees">Employees<br />
++            <button id="createEmployee">Create Employee</button>
++            <form id="createEmployeeForm">
++                Name:
++                <input type="text" name="name" maxlength="15" size="15" required><br />
++                Password:
++                <input type="password" name="password" maxlength="12" size="12" required><br />
++                Qualification:
++                <select type="list" name="qualificationLevel">
++                    <option value="junior">Junior</option>
++                    <option value="senior">Senior</option>
++                </select><br />
++                Manager:
++                <input type="checkbox" name="canManage"><br />
++                Available:
++                <input type="checkbox" name="available"><br />
++                <input type="submit" value="Create">
++                <input type="reset">
++            </form>
++        </section>
++        <section id="log">Log<br /></section>
++
+         <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+-        
++        <script src="resources/animations.js"></script>
++        <script src="resources/modelFactory.js"></script>
++        <script src="resources/database.js"></script>
++        <script src="resources/commands.js"></script>
++        <script src="resources/commandProcessor.js"></script>
++        <script src="resources/container.js"></script>
++        <script src="resources/manageit.js"></script>
+     </body>
+ </html>
+\ No newline at end of file

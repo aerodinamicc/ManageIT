@@ -13,23 +13,26 @@ $(function () {
 
         log.append(new Date().toLocaleDateString('en-GB') + ': ' + commandResult[0] + '<br />')
         if (commandResult[1].hasOwnProperty('name')) {
-            $('<div class="employeeClass">', {
+            let $employee = $('<div/>', {
                 id: `${commandResult[1].name}`,
+                class: "droppable",
                 text: `${commandResult[1].name} [${commandResult[1].qualificationLevel}]`
-            },'<div/>').appendTo("#employees");
-            /*$( function() {
-                $( ".employeeClass" ).droppable({accept: ".taskClass"});
-              } );*/
+            }).droppable({accept: ".draggable"});
+            $employee.appendTo("#employees");
+            //make it droppable
+                $( ".droppable" ).droppable({accept: ".draggable"});
+
         } else if (commandResult[1].hasOwnProperty('taskName')) {
-            $('<div class="taskClass">', {
+            let $task = $('<div/>', {
                 id: `${commandResult[1].taskName}`,
+                class: "draggable",
                 text: `${commandResult[1].taskName} [${commandResult[1].taskPriority}]`
-            }, '<div/>').appendTo("#tasks");
-            /*$( function() {
-                $( ".taskClass" ).draggable({revert:"invalid",
-                                            helper:"clone"});
-              } );*/
+            }).draggable({revert:"invalid", helper:"clone"});
+            $task.appendTo("#tasks");
+            //draggable
+            $( ".draggable" ).draggable({revert:"invalid", helper:"clone"});;
         }
+        
 
         $(`#${formID}`)[0].reset()
 
