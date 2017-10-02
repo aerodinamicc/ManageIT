@@ -19,8 +19,19 @@ $(function () {
                 text: `${commandResult[1].name} [${commandResult[1].qualificationLevel}]`
             }).droppable({accept: ".draggable"});
             $employee.appendTo("#employees");
-            //make it droppable
-                $( ".droppable" ).droppable({accept: ".draggable"});
+            //makes it droppable
+            //$( ".droppable" ).droppable({accept: ".draggable"});
+            $('.droppable').droppable({ drop: Drop });
+            
+            function Drop(event, ui) {
+              var draggableId = ui.draggable.attr("id");
+              var droppableId = $(this).attr("id");
+              let employee = container.database.employees.find(x => (x.name == `${droppableId}`))
+              let task = container.database.tasks.find(x => (x.taskName == `${draggableId}`))
+              employee.assignedTasks.push(task);
+              task.taskStatus= "Assigned";
+              task.assignedEmployees.push(employee);
+            }
 
         } else if (commandResult[1].hasOwnProperty('taskName')) {
             let $task = $('<div/>', {
@@ -29,10 +40,11 @@ $(function () {
                 text: `${commandResult[1].taskName} [${commandResult[1].taskPriority}]`
             }).draggable({revert:"invalid", helper:"clone"});
             $task.appendTo("#tasks");
-            //draggable
-            $( ".draggable" ).draggable({revert:"invalid", helper:"clone"});;
+            //makes it draggable
+            $( ".draggable" ).draggable({revert:"invalid", helper:"clone"});
         }
         
+        //$(".draggable")[0].reset()
 
         $(`#${formID}`)[0].reset()
 
